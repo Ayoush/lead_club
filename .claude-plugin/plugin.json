@@ -1,0 +1,46 @@
+{
+  "name": "lead-club",
+  "displayName": "Lead Club – Vibe Prospecting",
+  "version": "0.1.0",
+  "description": "Describe who you want to reach; Claude researches the web for leads, TypeSafe Jev decides which ones are real and on-ICP, and you get a clean CSV.",
+  "author": { "name": "Ayoush", "email": "hireayoush@gmail.com" },
+  "repository": "https://github.com/Ayoush/lead_club",
+  "homepage": "https://github.com/Ayoush/lead_club",
+  "keywords": ["leads", "prospecting", "sales", "outreach", "jev", "typesafe", "lead-qualification", "csv"],
+  "userConfig": {
+    "jev_api_key": {
+      "type": "string",
+      "title": "TypeSafe (Jev) API key",
+      "description": "Your TypeSafe AI API key. Jev uses it to decide whether each lead is real and matches your ICP. Get one at https://typesafe.ai (console → API Keys).",
+      "sensitive": true,
+      "required": true
+    },
+    "jev_model": {
+      "type": "string",
+      "title": "Jev model",
+      "description": "Model name sent to the System One API.",
+      "default": "jev-latest",
+      "required": false
+    },
+    "min_confidence": {
+      "type": "number",
+      "title": "Minimum confidence for 'qualified'",
+      "description": "Leads whose Jev verdict confidence is below this are downgraded to 'review' (0-1).",
+      "default": 0.6,
+      "min": 0,
+      "max": 1,
+      "required": false
+    }
+  },
+  "mcpServers": {
+    "jev": {
+      "command": "node",
+      "args": ["${CLAUDE_PLUGIN_ROOT}/server/jev-mcp.mjs"],
+      "env": {
+        "JEV_API_KEY": "${user_config.jev_api_key}",
+        "JEV_MODEL": "${user_config.jev_model}",
+        "JEV_MIN_CONFIDENCE": "${user_config.min_confidence}"
+      }
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "name": "lead-club",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Vibe prospecting for Claude Code: web research finds leads, TypeSafe Jev decides which are real and on-ICP, CSV export at the end.",
+  "type": "module",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "test": "node --test test/*.test.mjs",
+    "serve:stdio": "node server/jev-mcp.mjs",
+    "serve:http": "node server/jev-mcp.mjs --http ${PORT:-8787}"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "name": "lead-club",
+  "owner": { "name": "Ayoush", "email": "hireayoush@gmail.com" },
+  "description": "Lead Club plugins for Claude Code: vibe prospecting with web research + TypeSafe Jev qualification.",
+  "plugins": [
+    {
+      "name": "lead-club",
+      "source": "./",
+      "description": "Describe who you want to reach; Claude finds leads on the web, Jev decides which are real and on-ICP, and you get a CSV.",
+      "version": "0.1.0",
+      "category": "productivity",
+      "tags": ["leads", "prospecting", "sales", "jev", "typesafe"]
+    }
+  ]
+}
